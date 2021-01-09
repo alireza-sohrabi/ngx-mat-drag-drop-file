@@ -1,0 +1,24 @@
+{
+  "name": "ngx-mat-drag-drop-file",
+  "version": "1.0.0",
+  "peerDependencies": {
+    "@angular/common": "^10.1.6",
+    "@angular/core": "^10.1.6",
+    "@angular/material": "^10.2.7",
+    "file-icons-js": "^1.1.0"
+  },
+  "dependencies": {
+    "tslib": "^2.0.0"
+  },
+  "description": "it is an angular material drag and drop file, which is completely responsive",
+  "keywords": [
+    "angular",
+    "angular material",
+    "drag and drop file",
+    "image Uploader",
+    "full responsive"
+  ],
+  "author": "alireza sohrabi",
+  "config": {
+  }
+}

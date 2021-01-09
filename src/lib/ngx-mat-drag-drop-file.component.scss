@@ -1,0 +1,246 @@
+
+ngx-mat-drag-drop-file {
+  input {
+    width: 0;
+    height: 0;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+  }
+
+  :host {
+    display: block;
+    border: 2px dashed;
+    border-radius: 20px;
+    min-height: 50px;
+    margin: 10px auto;
+    max-width: 500px;
+    padding: 20px;
+    cursor: pointer;
+  }
+
+  /* :host:active, */
+  /* :host.drag-over {
+    border-color: purple;
+  } */
+  :host.disabled {
+    opacity: 0.5;
+    cursor: unset;
+  }
+
+  .placeholder {
+    /* opacity: 0.9; */
+    color: grey;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: auto;
+  }
+
+  mat-chip {
+    max-width: 100%;
+  }
+
+  .filename {
+    max-width: calc(100% - 1em);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  :host.empty-input {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .mat-chip.mat-standard-chip.mat-focus-indicator {
+    /* transition: none !important; */
+    box-shadow: none;
+  }
+
+  .mat-chip.mat-standard-chip::after {
+    background: unset;
+  }
+
+
+  .mat-chip {
+    border: 1px solid #757575 !important;
+  }
+
+  .filename {
+    padding-right: 30px !important;
+  }
+
+  .mat-chip-list-wrapper {
+    padding: 50px;
+    border: 1px dashed;
+  }
+}
+
+
+.ngx-mat-drag-drop-file-items {
+  display: flex;
+  grid-gap: 15px;
+  padding: 8px;
+  flex-wrap: wrap;
+  width: 100%;
+
+}
+
+.attachment-image__icon {
+  font-size: 50px !important;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+.ngx-mat-drag-drop-file-item {
+  height: 96px;
+  width: 96px;
+  border: 1px dashed #BDBDBD;
+  border-radius: 8px;
+  position: relative;
+  padding: 2px;
+
+  mat-progress-bar {
+    position: absolute;
+    top: 50%;
+    width: 80px;
+    left: 8px;
+    //transform: translateY(-50%);
+    z-index: 111;
+  }
+
+  //.mat-progress-bar {
+  //  position: absolute;
+  //  bottom: 0;
+  //}
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  transition: box-shadow 200ms ease;
+}
+
+.ngx-mat-drag-drop-file-item:hover {
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, .175) !important;
+
+}
+
+.ngx-mat-drag-drop-file-item.error {
+  border-color: #e53935;
+}
+
+.ngx-mat-drag-drop-file-item.success {
+  //border-color: #7CB342;
+
+}
+
+
+.ngx-mat-drag-drop-file-avatar-icon {
+  position: absolute;
+}
+
+.ngx-mat-drag-drop-file-avatar-error,
+.ngx-mat-drag-drop-file-avatar-check {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  border-radius: 50%;
+  z-index: 11;
+  width: 24px;
+  background: #AED581;
+  height: 24px;
+  font-size: -1px;
+  color: #fff;
+}
+
+.ngx-mat-drag-drop-file-avatar-error {
+  background: #ef5350;
+
+}
+
+
+//.attachment-image__icon::before {
+//  font-size: 55px !important;
+//}
+.ngx-mat-drag-drop-file-wrapper {
+  padding: 25px;
+  //border: 1px dashed #BDBDBD;
+  min-height: 105px;
+  display: flex;
+  flex-direction: column;
+  grid-gap: 15px;
+}
+
+.ngx-mat-drag-drop-file-error-items {
+  display: flex;
+  flex-direction: column;
+  grid-gap: 8px;
+}
+
+.ngx-mat-drag-drop-file-error-item {
+  font-size: 11px;
+  color: #d32f2f;
+  max-width: 100%;
+  white-space: pre-line;
+}
+
+.ngx-mat-drag-drop-file-wrapper.dragging {
+  border-color: #F57C00 !important;
+}
+
+.ngx-mat-drag-drop-file-selector {
+  background-color: #fff;
+  position: relative;
+}
+
+.ngx-mat-drag-drop-file-selector img {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.ngx-mat-drag-drop-file-item-trash {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  cursor: pointer;
+  top: 4px;
+  left: 4px;
+  z-index: 11;
+  background: #e0e0e0;
+  opacity: 0.95;
+  transition: opacity 260ms ease-in-out;
+  border: 1px solid #e0e0e0;
+  border-radius: 2px;
+}
+
+.ngx-mat-drag-drop-file-item-trash i {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+}
+
+.ngx-mat-drag-drop-file-item-trash:hover {
+  opacity: 1;
+}
+
+.ngx-mat-drag-drop-file-error-maxFileCount {
+  font-size: 11px;
+  color: #d32f2f;
+  max-width: 100%;
+  white-space: pre-line;
+}

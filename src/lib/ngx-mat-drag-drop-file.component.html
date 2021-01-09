@@ -1,0 +1,62 @@
+<div [class.dragging]="isDragover" class="ngx-mat-drag-drop-file-wrapper">
+  <div *ngIf="maxFilePickCountError" class="ngx-mat-drag-drop-file-error-maxFileCount">
+    {{maximumFileLimitLabel}}: {{maxFilePickCount}}
+  </div>
+  <div class="ngx-mat-drag-drop-file-items" selectable="false">
+    <ng-container *ngFor="let file of files">
+      <ng-container *ngIf="file['status']!=='error'">
+        <div [class.success]="file['status']==='complete' ||file['status']==='uploaded'"
+             class="ngx-mat-drag-drop-file-item" [matTooltip]="file.size|byte" matTooltipPosition="below"
+             [matTooltipDisabled]="displayFileSize"
+             selected
+
+        >
+          <!--    [disabled]="disabled"-->
+          <!--    color="''" disableRipple="true"-->
+          <!--    [removable]="!disabled"-->
+          <!--    (removed)="removeFile(file)"-->
+          <div [title]="deleteFileLabel" *ngIf="file['status']==='complete' || file['status']==='uploaded'"
+               class="ngx-mat-drag-drop-file-item-trash" (click)="removeFile(file)">
+            <i class="far fa-trash-alt"></i>
+          </div>
+          <div *ngIf="file['status']==='complete'" class="ngx-mat-drag-drop-file-avatar-check">
+            <mat-icon>check</mat-icon>
+          </div>
+          <mat-progress-bar *ngIf="file['status']!=='complete' &&  file['status']!=='uploaded'" color="warn"
+                            [value]="file['message']">
+
+          </mat-progress-bar>
+          <div *ngIf="!file['imageUrl']" [class]="file.name | fileIcon"></div>
+
+          <img *ngIf="file['imageUrl']" [src]="file['imageUrl']"/>
+
+          <!--                    <mat-progress-bar *ngIf="file['status']!=='complete'"-->
+          <!--                                      [value]="file['message']"></mat-progress-bar>-->
+          <div class="ngx-mat-drag-drop-file-avatar-icon">
+
+          </div>
+
+        </div>
+      </ng-container>
+
+    </ng-container>
+    <div class="ngx-mat-drag-drop-file-item ngx-mat-drag-drop-file-selector" (click)="open()">
+      <img [src]="addImageIcon">
+    </div>
+
+  </div>
+  <div *ngIf="errors && errors.length >0" class="ngx-mat-drag-drop-file-error-items">
+    <ng-container *ngFor="let err of errors">
+      <div class="ngx-mat-drag-drop-file-error-item">
+        <span> {{err.name}} </span>
+        <span> : {{err['message']}} </span>
+
+
+      </div>
+    </ng-container>
+  </div>
+  <!--    <span class="placeholder" *ngIf="!files.length">{{emptyPlaceholder}}</span>-->
+  <input [maxLength]="maxFilePickCount" #fileInputEl class="hidden" type="file" [attr.multiple]="multiple? '' : null"
+         [attr.accept]="accept">
+
+</div>
